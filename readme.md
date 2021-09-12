@@ -13,10 +13,17 @@ I do recommend using docker alongside the
 This example has three parts, divided up into three subdirectories:
 
 ```
-├── scripts # Handy scripts for building the project
-├── common  # A shared library which both the client and server link against
-├── client  # The web UI, built using Bonsai and Js_of_ocaml
-└── server  # The web-server and RPC server
-    ├── bin # The command-line executable for the server
-    └── src # A library containing all the server logic
+├── .devcontainer 
+│   ├── Dockerfile        # A dockerfile that builds an image which can build this project
+│   └── devcontainer.json # Necessary for Vs Code Dev Container support
+├── .github/workflows     # Github workflow for continuously building this project
+├── scripts               # Handy scripts for building the project
+│
+├── common                # A shared library which both the client and server link against
+├── client                # The web UI, built using Bonsai and Js_of_ocaml
+└── server                # The web-server and RPC server
+    ├── bin               # The command-line executable for the server
+    └── src               # A library containing all the server logic
 ```
+
+The example itself is a dumb chat client, 
