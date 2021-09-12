@@ -26,4 +26,5 @@ This example has three parts, divided up into three subdirectories:
     └── src               # A library containing all the server logic
 ```
 
-The example itself is a dumb chat client, 
+The example itself is a simple chat client, not super interesting, or even very
+ideomatic to be perfectly honest.
