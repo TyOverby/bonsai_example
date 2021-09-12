@@ -3,19 +3,20 @@
 
 This repo contains an demo application for Bonsai.
 
-More importantly than that, it also includes reproducable steps for how to build
-the dependencies.  The [`./devcontainer`](./.devcontainer) folder contains a
+Even more importantly, it also includes reproducable steps for how to build the
+dependencies.  The [`./devcontainer`](./.devcontainer) folder contains a
 dockerfile which will fully prepare this repo for use, however, you may choose
 to just read the file and follow the steps instead of using docker.  That said,
 I do recommend using docker alongside the 
 ["devcontainer" workflow in VS Code](https://code.visualstudio.com/docs/remote/containers).
 
-This example has three parts, divided up into three subdirectories:
+The project has three main parts, divided up into three subdirectories:
+`common`, `client` and `server`.
 
 ```
 ├── .devcontainer 
-│   ├── Dockerfile        # A dockerfile that builds an image which can build this project
-│   └── devcontainer.json # Necessary for Vs Code Dev Container support
+│   ├── Dockerfile        # A dockerfile for an image that can build this project
+│   └── devcontainer.json # VS Code Dev Container support
 ├── .github/workflows     # Github workflow for continuously building this project
 ├── scripts               # Handy scripts for building the project
 │
