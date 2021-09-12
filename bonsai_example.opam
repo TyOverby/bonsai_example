@@ -1,0 +1,17 @@
+opam-version: "2.0"
+maintainer: "opensource@janestreet.com"
+authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
+homepage: "https://github.com/janestreet/bonsai"
+bug-reports: "https://github.com/janestreet/bonsai/issues"
+dev-repo: "git+https://github.com/janestreet/bonsai.git"
+doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/bonsai/index.html"
+license: "MIT"
+build: [
+  ["dune" "build" "-p" name "-j" jobs]
+]
+depends: [
+  "ocaml" {>= "4.08.0"}
+  "bonsai"
+]
+synopsis: "An example bonsai app"
+description: "An example bonsai app, complete with server / async-rpc"

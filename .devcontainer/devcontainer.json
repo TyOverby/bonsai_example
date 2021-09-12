@@ -1,0 +1,9 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.183.0/containers/alpine
+{
+    "dockerFile": "Dockerfile",
+    "remoteUser": "opam",
+    "extensions": [ "ocamllabs.ocaml-platform" ],
+    "forwardPorts": [8080, 80],
+    "mounts": ["source=${localEnv:HOME}/.ssh,target=/home/opam/.ssh,type=bind,readonly,consistency=cached"]
+}
