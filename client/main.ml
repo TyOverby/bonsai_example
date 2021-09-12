@@ -28,13 +28,13 @@ end
 let process_message_stream ~conn ~room_state_var =
   let%bind pipe, _ = Rpc.Pipe_rpc.dispatch_exn Protocol.Message_stream.t conn () in
   Pipe.iter pipe ~f:(fun message ->
-    Bonsai.Var.update
-      room_state_var
-      ~f:(fun ({ Room_state.messages; current_room } as prev) ->
-        if [%equal: Room.t option] current_room (Some message.room)
-        then { prev with messages = List.append messages [ message ] }
-        else prev);
-    Deferred.unit)
+      Bonsai.Var.update
+        room_state_var
+        ~f:(fun ({ Room_state.messages; current_room } as prev) ->
+          if [%equal: Room.t option] current_room (Some message.room)
+          then { prev with messages = List.append messages [ message ] }
+          else prev);
+      Deferred.unit)
 ;;
 
 let send_message ~conn =
@@ -51,8 +51,8 @@ let send_message ~conn =
     Rpc.Rpc.dispatch_exn Protocol.Send_message.t conn
     |> Effect.of_deferred_fun
     >> Effect.bind ~f:(function
-      | Ok a -> Effect.return a
-      | Error _ -> Effect.Ignore)
+           | Ok a -> Effect.return a
+           | Error _ -> Effect.Ignore)
   in
   fun ~room ~contents ->
     let contents = obfuscate contents in
@@ -83,13 +83,13 @@ let run () =
       Start.Result_spec.just_the_view
       ~bind_to_element_with_id:"app"
       (let open Bonsai.Let_syntax in
-       App.component
-         ~room_list:(Bonsai.Var.value rooms_list_var)
-         ~current_room:(Room_state.current_room <$> Bonsai.Var.value room_state_var)
-         ~messages:(Room_state.messages <$> Bonsai.Var.value room_state_var)
-         ~refresh_rooms
-         ~change_room
-         ~send_message)
+      App.component
+        ~room_list:(Bonsai.Var.value rooms_list_var)
+        ~current_room:(Room_state.current_room <$> Bonsai.Var.value room_state_var)
+        ~messages:(Room_state.messages <$> Bonsai.Var.value room_state_var)
+        ~refresh_rooms
+        ~change_room
+        ~send_message)
   in
   don't_wait_for (run_refresh_rooms ~conn ~rooms_list_var);
   don't_wait_for (process_message_stream ~conn ~room_state_var);
