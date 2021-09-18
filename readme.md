@@ -1,4 +1,4 @@
-# Bonsai Example App ![Bonsai Build](https://github.com/tyoverby/bonsai_example/actions/workflows/docker_test.yml/badge.svg)
+<h1> Bonsai Example App <img align=right src="https://github.com/tyoverby/bonsai_example/actions/workflows/docker_test.yml/badge.svg" /> </h1>
 
 This repo contains an demo application for
 [Bonsai](https://github.com/janestreet/bonsai).
